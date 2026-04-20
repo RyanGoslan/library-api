@@ -104,3 +104,11 @@ class TestBooksFilter:
         response = client.get("/api/books?genre=scifi")
         assert response.status_code == 200
         assert response.get_json() == []
+
+def test_create_book_default_status(client):
+    response = client.post("/api/books", json={
+        "title": "Test Book",
+        "created_by": "Martyniuk Stanislav", 
+    })
+
+    assert response.status_code == 201        
